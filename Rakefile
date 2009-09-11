@@ -5,12 +5,15 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "quick_serve"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Super simple web server mainly for javascript development}
+    gem.description = %Q{}
     gem.email = "marcin@applicake.com"
     gem.homepage = "http://github.com/marcinbunsch/quick_serve"
     gem.authors = ["Marcin Bunsch"]
-    gem.add_development_dependency "thoughtbot-shoulda"
+    gem.bindir = 'bin'
+    gem.executables = ['bin/quick_serve', 'bin/qs']
+    gem.default_executable = 'bin/qs'
+      
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
