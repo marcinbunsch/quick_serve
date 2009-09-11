@@ -11,8 +11,8 @@ begin
     gem.homepage = "http://github.com/marcinbunsch/quick_serve"
     gem.authors = ["Marcin Bunsch"]
     gem.bindir = 'bin'
-    gem.executables = ['bin/quick_serve', 'bin/qs']
-    gem.default_executable = 'bin/qs'
+    gem.executables = ['quick_serve', 'qs']
+    gem.default_executable = 'qs'
       
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
