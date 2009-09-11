@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+begin
+require 'mongrel' 
+rescue LoadError
+  puts "quick_serve requires mongrel. Install it with gem install mongrel"
+  exit(1)
+end
+
+
+if ARGV.length == 0
+  puts "quick_serve: port not specified, using 3000"
+  PORT = 3000
+else
+  PORT = ARGV[0]
+end
+
+HOST = '0.0.0.0'
+DIR = '.'
+
+config = Mongrel::Configurator.new :host => HOST, :port => PORT do
+  listener do
+    uri "/", :handler => Mongrel::DirHandler.new(DIR)
+  end
+
+  trap("INT") { stop }
+  run
+end
+
+puts "quick_serve: Mongrel running on port #{PORT} current dirrectory as docroot"
+config.join
+
