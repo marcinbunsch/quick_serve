@@ -1,6 +1,6 @@
 = quick_serve
 
-quick_server is a super-simple way of serving static files for development. It was made mainly for javascript development, but might have other uses.
+quick_serve is a super-simple way of serving static files for development. It was made mainly for javascript development, but might have other uses.
 
 = usage
 
