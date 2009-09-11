@@ -1,1 +1,1 @@
-system 'quick_serve'
+system "quick_serve #{ARGV[0]}" 

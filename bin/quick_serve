@@ -27,6 +27,6 @@ config = Mongrel::Configurator.new :host => HOST, :port => PORT do
   run
 end
 
-puts "quick_serve: Mongrel running on port #{PORT} current dirrectory as docroot"
+puts "quick_serve: Mongrel running on port #{PORT} current directory as docroot"
 config.join
 

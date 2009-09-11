@@ -1,6 +1,12 @@
 = quick_serve
 
-Description goes here.
+quick_server is a super-simple way of serving static files for development. It was made mainly for javascript development, but might have other uses.
+
+= usage
+
+Type 'qs' or 'quick_serve'
+
+By default it will use port 3000, but if you run 'qs 4000' it will use 4000 (or any other you specify)
 
 == Note on Patches/Pull Requests
  
