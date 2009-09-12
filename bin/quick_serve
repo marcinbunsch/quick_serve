@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'quick_serve'
-QuickServe.new.start
+QuickServe::Server.new.start

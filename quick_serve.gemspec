@@ -16,17 +16,16 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    ".document",
-     ".gitignore",
-     "LICENSE",
+    "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
      "bin/qs",
      "bin/quick_serve",
      "lib/quick_serve.rb",
-     "quick_serve.gemspec",
-     "test/test_helper.rb"
+     "lib/quick_serve/server.rb",
+     "lib/quick_serve/snapshot_handler.rb",
+     "quick_serve.gemspec"
   ]
   s.homepage = %q{http://github.com/marcinbunsch/quick_serve}
   s.rdoc_options = ["--charset=UTF-8"]

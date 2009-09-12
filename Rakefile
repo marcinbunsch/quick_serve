@@ -13,7 +13,8 @@ begin
     gem.bindir = 'bin'
     gem.executables = ['quick_serve', 'qs']
     gem.default_executable = 'qs'
-      
+    gem.files = []
+    gem.files = FileList['*', '{bin,lib,images,spec}/**/*']
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
