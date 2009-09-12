@@ -1,1 +1,4 @@
-system "quick_serve #{ARGV[0]}" 
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'quick_serve'
+QuickServe.new.start
