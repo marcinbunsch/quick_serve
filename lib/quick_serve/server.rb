@@ -11,8 +11,7 @@ module QuickServe
       begin
         if @options[:deamon]
           pid = fork do
-            old_stdout, $stdout = $stdout, StringIO.new
-            old_stderr, $stderr = $stderr, StringIO.new
+            $stderr, $stdout = StringIO.new, StringIO.new
             serve
           end
           File.open(pidfile, 'w') {|f| f.write(pid) }      
