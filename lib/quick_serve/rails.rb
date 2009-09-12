@@ -7,18 +7,17 @@ module Mongrel
       alias_method :original_process, :process
       
       def process(request, response)
-        #response.start do |head,out|
-        #  puts "** quick_serve: served snapshot"
-        #  head["Content-Type"] = "text/html"
-        #  out << "foo"
-        #end
-        #puts "=== quick_serve ==="
-        original_process(request, response)
-        #debugger
-        #puts 'dsa'
-        #debugger
-        #puts
-        #debugger
+        url = 'http://' + request.params["HTTP_HOST"] + request.params["REQUEST_URI"]
+        snapshot = QuickServe::Rails.fetch(url)
+        if snapshot
+          response.start do |head,out|
+            puts "quick_serve: served snapshot of #{url}"
+            head["Content-Type"] = "text/html"
+            out << snapshot
+          end
+        else
+          original_process(request, response)
+        end
       end
       
     end
@@ -27,17 +26,11 @@ module Mongrel
 end
 
 module ActionController
-  class Dispatcher
-    
-    after_dispatch :store_snapshot
+  class Base
+    after_filter :store_snapshot
     def store_snapshot
-      debugger
-      puts 'dsd'
-      if !@response.redirected_to
-        #QuickServe::Rails.store(@request.url, @response.body)
-        #debugger
-        #puts 'dsd'
-      end
+      puts "quick_serve: stored snapshot as #{request.url}"
+      QuickServe::Rails.store(request.url, response.body) if !response.redirected_to        
     end
   end
 end
@@ -45,6 +38,10 @@ end
 module QuickServe
   class Rails
     @@snapshots = {}
+    
+    def self.dump
+      @@snapshots
+    end
     
     def self.free
       @@snapshots = {}
