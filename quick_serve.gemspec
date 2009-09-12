@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "bin/qs",
      "bin/quick_serve",
      "lib/quick_serve.rb",
+     "lib/quick_serve/rails.rb",
      "lib/quick_serve/server.rb",
      "lib/quick_serve/snapshot_handler.rb",
      "quick_serve.gemspec"
