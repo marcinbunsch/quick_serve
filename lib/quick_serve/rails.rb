@@ -35,6 +35,7 @@ module ActionController
   end
 end
 
+
 module QuickServe
   class Rails
     @@snapshots = {}
@@ -58,3 +59,5 @@ module QuickServe
   end
 end
 puts "** quick_serve: attaching snapshot handler"
+require 'quick_serve/listener'
+Thread.new { QuickServe::Listener.new.start }
