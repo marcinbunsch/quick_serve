@@ -2,7 +2,7 @@ if defined?(RAILS_ENV)
   if RAILS_ENV == 'development'
     require 'quick_serve/rails'
   else
-    puts "** quick_serve: quick_serve can run only in development environment"
+    puts "** quick_serve: quick_serve rails adapter can run only in development environment"
   end
 else
   begin

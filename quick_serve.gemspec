@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{quick_serve}
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marcin Bunsch"]
-  s.date = %q{2009-09-12}
+  s.date = %q{2009-09-13}
   s.default_executable = %q{qs}
   s.description = %q{}
   s.email = %q{marcin@applicake.com}
@@ -23,10 +23,13 @@ Gem::Specification.new do |s|
      "bin/qs",
      "bin/quick_serve",
      "lib/quick_serve.rb",
-     "lib/quick_serve/listener.rb",
      "lib/quick_serve/rails.rb",
+     "lib/quick_serve/rails/ext/mongrel.rb",
+     "lib/quick_serve/rails/ext/rails.rb",
+     "lib/quick_serve/rails/listener.rb",
+     "lib/quick_serve/rails/snapshot.rb",
      "lib/quick_serve/server.rb",
-     "lib/quick_serve/snapshot_handler.rb",
+     "lib/quick_serve/snapshot/handler.rb",
      "quick_serve.gemspec"
   ]
   s.homepage = %q{http://github.com/marcinbunsch/quick_serve}
