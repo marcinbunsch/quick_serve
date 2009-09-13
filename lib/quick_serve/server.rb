@@ -7,7 +7,11 @@ module QuickServe
     end
 
     def start
-      puts "quick_serve: Mongrel running on port #{@options[:port]} current directory as docroot"
+      if @options[:url]
+        puts "quick_serve: running in snapshot mode using #{@options[:url]} as source"
+      else
+        puts "quick_serve: mongrel running on port #{@options[:port]} current directory as docroot"
+      end
       begin
         if @options[:deamon]
           pid = fork do
@@ -19,7 +23,7 @@ module QuickServe
           serve
         end
       rescue Errno::EADDRINUSE
-        puts "quick_serve: Port #{@options[:port]} is used by another process. Please specify other port using the -p option"
+        puts "quick_serve: port #{@options[:port]} is used by another process. Please specify other port using the -p option"
       end
     end
   
@@ -29,8 +33,11 @@ module QuickServe
         options = @options
         config = Mongrel::Configurator.new :host => options[:host], :port => options[:port] do
           listener do
-            # uri "/", :handler => Mongrel::DirHandler.new(options[:dir])
-            uri "/", :handler => QuickServe::SnapshotHandler.new(options[:url])
+            if options[:url]
+              uri "/", :handler => QuickServe::SnapshotHandler.new(options[:url])
+            else
+              uri "/", :handler => Mongrel::DirHandler.new(options[:dir])
+            end  
           end
           trap("INT") { stop }
           run
@@ -47,7 +54,6 @@ module QuickServe
           opts.on("--dir DIRECTORY", "Specify directory to act as docroot") { |value| @options[:dir] = value; }
           opts.on("--host HOST", "Specify host") { |value| @options[:host] = value; }
           opts.on("-s URL", "--snapshot URL", "Specify url for snapshot") { |value| @options[:url] = value; }
-          # opts.on("quit", "quit deamon (if present)") { quit }
           opts.on("-q", "quit deamon (if present)") { quit }
           opts.on("-d", "--deamon", "Run as a deamon process") { @options[:deamon] = true; }
           opts.on_tail("-h", "--help", "Show this message") do
