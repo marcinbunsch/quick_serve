@@ -34,10 +34,11 @@ module QuickServe
         config = Mongrel::Configurator.new :host => options[:host], :port => options[:port] do
           listener do
             if options[:url]
-              require 'quick_serve/snapshot/handler'
-              uri "/", :handler => QuickServe::Snapshot::Handler.new(options[:url])
+              require 'quick_serve/handlers/snapshot'
+              uri "/", :handler => QuickServe::Handlers::Snapshot.new(options[:url])
             else
-              uri "/", :handler => Mongrel::DirHandler.new(options[:dir])
+              require 'quick_serve/handlers/directory'
+              uri "/", :handler => QuickServe::Handlers::Directory.new(options[:dir])
             end  
           end
           trap("INT") { stop }

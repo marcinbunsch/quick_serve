@@ -23,13 +23,14 @@ Gem::Specification.new do |s|
      "bin/qs",
      "bin/quick_serve",
      "lib/quick_serve.rb",
+     "lib/quick_serve/handlers/directory.rb",
+     "lib/quick_serve/handlers/snapshot.rb",
      "lib/quick_serve/rails.rb",
      "lib/quick_serve/rails/ext/mongrel.rb",
      "lib/quick_serve/rails/ext/rails.rb",
      "lib/quick_serve/rails/listener.rb",
      "lib/quick_serve/rails/snapshot.rb",
      "lib/quick_serve/server.rb",
-     "lib/quick_serve/snapshot/handler.rb",
      "quick_serve.gemspec"
   ]
   s.homepage = %q{http://github.com/marcinbunsch/quick_serve}
