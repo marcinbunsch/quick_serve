@@ -1,12 +1,36 @@
-= quick_serve
+== quick_serve
 
 quick_serve is a super-simple way of serving static files for development. It was made mainly for javascript development, but might have other uses.
 
-= usage
+= General usage
 
-Type 'qs' or 'quick_serve'
+Type 'qs' or 'quick_serve'. By default it will use port 5000, but if you run 'qs -p 4000' it will use 4000 (or any other you specify)
 
-By default it will use port 3000, but if you run 'qs 4000' it will use 4000 (or any other you specify)
+*Options:*
+* *-p PORT, --port PORT* Specify port (default: 5000) 
+* *--dir DIRECTORY* Specify directory to act as docroot (default: current directory)
+* *--host HOST* Specify host (default: 0.0.0.0)
+* *-s URL, --snapshot URL* Specify url for snapshot
+* *-q* quit deamon (if present)
+* *-d, --deamon* Run as a deamon process
+
+= Snapshot mode usage
+
+When evoked with -s trailed with an url, quick_serve will fetch the url and serve it regardless of the path you call. It's useful for testing js/css as it serves the snapshot from memory, minimizing cpu/memory usage leaving the browser with reloading js/css.
+
+= Rails usage
+
+quick_serve has a Rails adapter which can be called by adding this in environment.rb:
+
+ require 'quick_serve'
+
+It's aimed at giving you a boost of speed on resource hungry pages when you're working on js/css.
+It will store all generated pages requested with GET and having no flash on it and free the snapshot collection when:
+
+* Any object is saved or destroyed in ActiveRecord
+* Any file is changed in the app/ directory 
+
+Keep in mind, it will run only in development mode.
 
 == Note on Patches/Pull Requests
  

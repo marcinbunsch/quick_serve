@@ -10,7 +10,7 @@ module QuickServe
       if @options[:url]
         puts "quick_serve: running in snapshot mode using #{@options[:url]} as source"
       else
-        puts "quick_serve: mongrel running on port #{@options[:port]} current directory as docroot"
+        puts "quick_serve: mongrel running on port #{@options[:port]} with current directory as docroot"
       end
       begin
         if @options[:deamon]
@@ -51,9 +51,9 @@ module QuickServe
         OptionParser.new do |opts|
           opts.banner = "Usage: qs [options]"
 
-          opts.on("-p PORT", "--port PORT", "Specify port") { |value| @options[:port] = value; }
-          opts.on("--dir DIRECTORY", "Specify directory to act as docroot") { |value| @options[:dir] = value; }
-          opts.on("--host HOST", "Specify host") { |value| @options[:host] = value; }
+          opts.on("-p PORT", "--port PORT", "Specify port (default: 5000)") { |value| @options[:port] = value; }
+          opts.on("--dir DIRECTORY", "Specify directory to act as docroot (default: current directory)") { |value| @options[:dir] = value; }
+          opts.on("--host HOST", "Specify host (default: 0.0.0.0)") { |value| @options[:host] = value; }
           opts.on("-s URL", "--snapshot URL", "Specify url for snapshot") { |value| @options[:url] = value; }
           opts.on("-q", "quit deamon (if present)") { quit }
           opts.on("-d", "--deamon", "Run as a deamon process") { @options[:deamon] = true; }
