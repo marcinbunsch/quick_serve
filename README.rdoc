@@ -1,18 +1,10 @@
 = quick_serve
 
-quick_serve is a super-simple way of serving static files for development. It was made mainly for javascript development, but might have other uses.
+quick_serve is a super-simple way of serving static files for development. It was made mainly for javascript and css development, but might have other uses.
 
 === General usage
 
-Type 'qs' or 'quick_serve'. By default it will use port 5000, but if you run 'qs -p 4000' it will use 4000 (or any other you specify)
-
-*Options:*
-* *-p PORT, --port PORT* Specify port (default: 5000) 
-* *--dir DIRECTORY* Specify directory to act as docroot (default: current directory)
-* *--host HOST* Specify host (default: 0.0.0.0)
-* *-s URL, --snapshot URL* Specify url for snapshot
-* *-q* quit deamon (if present)
-* *-d, --deamon* Run as a deamon process
+Type 'qs' or 'quick_serve'. It will start a mongrel web server using the current directory as docroot. By default it will use port 5000, but if you run 'qs -p 4000' it will use 4000 (or any other you specify). Type 'qs -h' for more options.
 
 === Snapshot mode usage
 
@@ -36,13 +28,10 @@ Keep in mind, it will run only in development mode.
  
 * Fork the project.
 * Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
 * Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request.
 
 == Copyright
 
-Copyright (c) 2009 Marcin Bunsch. See LICENSE for details.
+Copyright (c) 2009 Marcin Bunsch . See LICENSE for details.
