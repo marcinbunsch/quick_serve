@@ -2,7 +2,7 @@ module QuickServe
   class Server
   
     def initialize
-      @options = { :dir => '.', :port => 3000, :host => '0.0.0.0', :deamon => false, :url => nil }
+      @options = { :dir => '.', :port => 5000, :host => '0.0.0.0', :deamon => false, :url => nil }
       parse
     end
 
