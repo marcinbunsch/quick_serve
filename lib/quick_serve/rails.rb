@@ -31,7 +31,8 @@ module ActionController
     after_filter :store_snapshot
     def store_snapshot
       puts "quick_serve: stored snapshot as #{request.url}"
-      QuickServe::Rails.store(request.url, response.body) if !response.redirected_to
+      # do not store redirects or pages with flash
+      QuickServe::Rails.store(request.url, response.body) if !response.redirected_to and flash == {}
     end
   end
 end
