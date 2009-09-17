@@ -16,6 +16,10 @@ module ActiveRecord
     after_destroy :free_snapshots
     
     def free_snapshots
+      # if rails uses active_record store, it changes with each request, making quick_serve unusable
+      # this probably should be a config option (somehow)
+      return if self.class.to_s == 'CGI::Session::ActiveRecordStore::Session'
+      puts "quick_serve: detected change in #{self.class}"
       QuickServe::Rails::Snapshot.reset
     end
     

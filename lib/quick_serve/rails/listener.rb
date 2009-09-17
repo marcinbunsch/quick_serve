@@ -45,7 +45,7 @@ module QuickServe
               updated << filename
               # update the mtime in file registry so we it's only send once
               files[filename] = current_mtime
-              # puts ">> Spotted change in #{filename}"
+              puts "quick_serve: spotted change in #{filename}"
             end
           end
           QuickServe::Rails::Snapshot.reset if updated != []
