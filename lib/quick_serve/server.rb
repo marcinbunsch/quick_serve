@@ -38,7 +38,13 @@ module QuickServe
               uri "/", :handler => QuickServe::Handlers::Snapshot.new(options[:url])
             else
               require 'quick_serve/handlers/directory'
-              uri "/", :handler => QuickServe::Handlers::Directory.new(options[:dir])
+              if File.exists?(File.join(Dir.pwd, 'responses.qs'))
+                puts "quick_serve: responses.qs found, installing predefined responses"
+                require 'quick_serve/handlers/request'
+                uri "/", :handler => QuickServe::Handlers::Request.new(options[:dir])  
+              else
+                uri "/", :handler => QuickServe::Handlers::Directory.new(options[:dir])  
+              end
             end  
           end
           trap("INT") { stop }

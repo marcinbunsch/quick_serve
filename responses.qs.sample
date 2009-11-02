@@ -1,0 +1,30 @@
+# look ma, comments!!
+== get /form
+<form action="/foo" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="text" name="bla" />
+  <input type="submit" value="Send" />
+</form>
+== post /foo
+This only gets sent if you send a post request
+# Rails based REST is supported
+== put /foo
+This only gets sent if you send a put request
+== delete /foo
+This only gets sent if you send a delete request
+# specific urls are evaluated before generic ones
+== get /users/3
+User 3!!
+== get /users/*
+Some User!!
+# you can specify content-type as the third parameter, default is text/html
+== get /foo
+normal html
+# is the same as
+== get /foo text/html
+normal html
+# if you use more spaces, it won't matter
+== get /boo    text/javascript
+javascript
+== get /somecss/foo text/css
+css
