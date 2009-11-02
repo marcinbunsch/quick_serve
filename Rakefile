@@ -43,7 +43,12 @@ end
 
 task :test => :check_dependencies
 
-task :default => :test
+desc 'Run the gem locally'
+task :run do
+  system('ruby -I lib bin/quick_serve')
+end
+
+task :default => :run
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|

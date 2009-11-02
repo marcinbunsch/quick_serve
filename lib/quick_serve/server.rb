@@ -2,7 +2,7 @@ module QuickServe
   class Server
   
     def initialize
-      @options = { :dir => '.', :port => 5000, :host => '0.0.0.0', :deamon => false, :url => nil }
+      @options = { :dir => Dir.pwd, :port => 5000, :host => '0.0.0.0', :deamon => false, :url => nil }
       parse
     end
 
@@ -10,7 +10,7 @@ module QuickServe
       if @options[:url]
         puts "quick_serve: running in snapshot mode using #{@options[:url]} as source"
       else
-        puts "quick_serve: mongrel running on port #{@options[:port]} with current directory as docroot"
+        puts "quick_serve: mongrel running on port #{@options[:port]} with docroot in #{@options[:dir]}"
       end
       begin
         if @options[:deamon]
